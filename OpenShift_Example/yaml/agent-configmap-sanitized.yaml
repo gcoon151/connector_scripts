@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: connector-agent-secrets
+  namespace: agent1
+data:
+# Note connector agent requires 4 variables. The other file has the 4th in a
+# different style. 
+  satellite_connector_id: "REPLACEMEWITHAREALCONNECTORID" # Connector 123
+  satellite_connector_region: us-east
+  satellite_connector_tags: IAmATag
+
