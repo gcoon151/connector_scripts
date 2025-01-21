@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "This is instructions for using the ibmcloud container registry plugin to log you in so that you can pull the agent image. Run this from where you want the agent to run."
 # Install container registry plugin
 ibmcloud plugin install cr
 # Set global region.
