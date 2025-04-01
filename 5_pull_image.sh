@@ -1,3 +1,5 @@
 #!/bin/bash
 # or change docker to nerdctl for rancher
-docker pull icr.io/ibm/satellite-connector/satellite-connector-agent:latest
+docker pull us.icr.io/armada-master/satellite-connector-agent:latest
+# I know I should put the public one icr.io/ibm/satellite-connector/satellite-connector-agent:latest 
+# but authentication is such a pain some times and I like things working by default. 
