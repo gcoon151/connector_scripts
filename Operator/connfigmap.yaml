@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: agent-configmap
+  namespace: {{ .Values.namespace }}
+data:
+  satellite_connector_id: "{{ .Values.config.satellite_connector_id }}"
+  satellite_connector_region: "{{ .Values.config.satellite_connector_region }}"
+

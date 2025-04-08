@@ -1,0 +1,15 @@
+namespace: agent1
+name: agent2
+replicas: 3
+
+image:
+  repository: us.icr.io/armada-master/satellite-connector-agent
+  tag: latest
+
+apiKey: REPLACEMEWITHAREALAPIKEY
+
+config:
+  satellite_connector_id: "your-connector-id"
+  satellite_connector_region: "us-south"
+  satellite_connector_tags: "deployment2"
+

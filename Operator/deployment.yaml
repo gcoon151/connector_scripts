@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+    spec:
+      containers:
+        - name: container
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: SATELLITE_CONNECTOR_IAM_APIKEY
+              value: "{{ .Values.apiKey }}"
+            - name: SATELLITE_CONNECTOR_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: agent-configmap
+                  key: satellite_connector_id
+            - name: SATELLITE_CONNECTOR_REGION
+              valueFrom:
+                configMapKeyRef:
+                  name: agent-configmap
+                  key: satellite_connector_region
+            - name: SATELLITE_CONNECTOR_TAGS
+              value: "{{ .Values.config.satellite_connector_tags }}"
+
