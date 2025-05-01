@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "Hint if you have ARM mac, use rancher and change this to nerdctl in the script. Rancher works best on ARM macs"; 
-echo "Now have arm agent images. May not be an issue any more."
+echo "UPDATE: Now we have arm agent images. May not be an issue any more."
+echo "latest, latest-amd64, latest-arm64, latest-ppc64le, and latest-s390x."
 # additional notes on rancher I use containerd and don't even start the kubernetes stuff
 docker run -d --network host --platform linux/amd64 --env-file ~/agent/env-files/env.txt -v ~/agent/env-files:/agent-env-files us.icr.io/armada-master/satellite-connector-agent:latest
 # Use this one for production: icr.io/ibm/satellite-connector/satellite-connector-agent:latest
