@@ -1,3 +1,6 @@
+# Note this might be a better test https://cloud.ibm.com/docs/satellite?topic=satellite-end-to-end
+# but this script is meant to run outside of a container on your host to 
+# just launch a very basic web service that serves up a file somefile.txt over HTTP. 
 #!/bin/bash
 mkdir webdemo
 # This is the data file served up. 
