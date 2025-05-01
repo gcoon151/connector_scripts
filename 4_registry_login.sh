@@ -1,4 +1,8 @@
 #!/bin/bash
+# I should remove this now. 
+# the subsequent pull script (5) actually currently points to an unauthenticated image of our connector agent. 
+# I'm leaving this for now just so folks know there is an ibmcloud CR plugin and an example of 
+# how to log into icr.io. 
 echo "This is instructions for using the ibmcloud container registry plugin to log you in so that you can pull the agent image. Run this from where you want the agent to run."
 # Install container registry plugin
 ibmcloud plugin install cr
