@@ -5,5 +5,5 @@
 # NOTE this path way will likely break certificates you try to use across this because the route you put on your container platform 
 # won't match the certificate on the destination service. That's an even more advanced set up where you configure your container platform
 # with all the certificates to allow it to be a part of that path. 
-nerdctl run --name linkagent2 -d  --sysctl "net.ipv4.ip_unprivileged_port_start=0" -p 32645:29999 --env-file ~/agent/env-files/env.txt --env LOG_LEVEL=trace -v ~/agent/env-files:/agent-env-files icr.io/ibm/satellite-connector/satellite-connector-agent:latest
+podman run --name linkagent2 -d  --sysctl "net.ipv4.ip_unprivileged_port_start=0" -p 32645:29999 --env-file ~/agent/env-files/env.txt --env LOG_LEVEL=trace -v ~/agent/env-files:/agent-env-files us.icr.io/armada-master/satellite-connector-agent:la
 
