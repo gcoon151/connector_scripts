@@ -3,12 +3,11 @@ kind: Deployment
 metadata:
   namespace: agent1
   name: agent2
-  annotations: {}
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: agent2
-  replicas: 3
   template:
     metadata:
       labels:
@@ -16,29 +15,16 @@ spec:
     spec:
       containers:
         - name: container
-          image: 'icr.io/ibm/satellite-connector/satellite-connector-agent:latest'
+          image: icr.io/ibm/satellite-connector/satellite-connector-agent:latest
           ports:
             - containerPort: 8080
               protocol: TCP
-          env:
-            - name: SATELLITE_CONNECTOR_IAM_APIKEY
-              value: REPLACEMEWITHAREALAPIKEYibmcloud_iam_api-key-create_KEYNAME
-            - name: SATELLITE_CONNECTOR_ID
-              valueFrom:
-                configMapKeyRef:
-                  name: agent-configmap
-                  key: satellite_connector_id
-            - name: SATELLITE_CONNECTOR_REGION
-              valueFrom:
-                configMapKeyRef:
-                  name: agent-configmap
-                  key: satellite_connector_region
-            - name: SATELLITE_CONNECTOR_TAGS
-              value: deployment2
-      imagePullSecrets: []
+          envFrom:
+            - secretRef:
+                name: connector-agent-secrets
   strategy:
     type: RollingUpdate
     rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
-  paused: false
+
